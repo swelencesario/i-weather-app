@@ -9,5 +9,5 @@ import Foundation
 
 public protocol WeatherRepositoryProtocol {
     
-    func fetchByLocal(local: String, completion: @escaping (WeatherData?) -> ())
+    func fetchByLocal(local: String, completion: @escaping (WeatherModel?) -> ())
 }
