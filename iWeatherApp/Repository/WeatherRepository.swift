@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 public class WeatherRepository: WeatherRepositoryProtocol {
-    public func fetchByLocal(local: String, completion: @escaping (WeatherModel?) -> ()) {
+    public func fetchByLocal(local: String, completion: @escaping ([WeatherModel]) -> ()) {
         let dictionaryLocal = ["by_city": local]
         AF.request(RepositoryConstants.baseUrl, method: .get, parameters: dictionaryLocal)
             .responseData { (response) in
@@ -17,11 +17,11 @@ public class WeatherRepository: WeatherRepositoryProtocol {
                 case .success(_):
                     if let data = response.data {
                         let decoded = self.parseJSON(data) //TODO: - ação de atualizar o tempo.
-                        completion(decoded!)
+                        completion([decoded!])
                         print(decoded!)
                     }
                 case .failure(_):
-                    completion(nil)
+                    completion([])
                 }
             }
     }

@@ -8,6 +8,8 @@
 import UIKit
 
 class WeeklyWeatherTbCell: UITableViewCell {
+    
+    var viewModel: WeatherViewModel?
  
     @IBOutlet weak var dateLabel: UILabel!
     
@@ -17,5 +19,24 @@ class WeeklyWeatherTbCell: UITableViewCell {
     
     @IBOutlet weak var minTemLabel: UILabel!
     
-    
+    func setup(_ viewModel: WeatherViewModel) {
+        dateLabel.text = viewModel.weekDay
+        //icon.image =
+        maxTempLabel.text = String(viewModel.maxTemp)
+        minTemLabel.text = String(viewModel.minTemp)
+    }
+}
+extension UIImageView {
+    func loadFrom(URLAddress: String) {
+        guard let url = URL(string: URLAddress) else {
+            return
+        }
+        DispatchQueue.main.async { [weak self] in
+            if let imageData = try? Data(contentsOf: url) {
+                if let loadedImage = UIImage(data: imageData) {
+                    self?.image = loadedImage
+                }
+            }
+        }
+    }
 }
