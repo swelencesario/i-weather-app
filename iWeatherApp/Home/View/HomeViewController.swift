@@ -16,6 +16,7 @@ class HomeViewController: UIViewController {
         }
     }
     
+    @IBOutlet weak var currentDate: UILabel!
     @IBOutlet weak var minTemp: UILabel!
     @IBOutlet weak var currentTemp: UILabel!
     @IBOutlet weak var maxTempLabel: UILabel!
@@ -54,10 +55,16 @@ let repository = WeatherRepository()
             self?.maxTempLabel.text = String(weatherResults[0].maxTemp)
             self?.minTemp.text = String(weatherResults[0].minTemp)
             self?.descriptionLabel.text = weatherResults[0].mainDescription
+            self?.localNameLabel.text = weatherResults[0].localName
+            
+            self?.currentDate.text = self?.viewModel.customData(weatherResults[0].dt)
+        
             print(weatherResults[0].mainDescription)
         }
         
     }
+    
+    
     
 }
 

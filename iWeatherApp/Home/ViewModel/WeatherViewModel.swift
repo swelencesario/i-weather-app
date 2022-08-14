@@ -15,7 +15,8 @@ public class WeatherViewModel {
     var maxTemp: Double
     var minTemp: Double
     var mainDescription: String
-    
+    var localName: String
+    var dt: Int
     
     init(_ weather: WeatherModel) {
         self.weekDay = ""
@@ -24,5 +25,8 @@ public class WeatherViewModel {
         self.minTemp = weather.tempMin ?? 0.0
         self.currentTemp = weather.currentWeather ?? 0.0
         self.mainDescription = weather.mainDescription ?? ""
+        self.localName = weather.name
+        self.dt = weather.dt
+        
     }
 }

@@ -25,6 +25,20 @@ public class HomeViewModel {
         weatherRepository = repository
     }
     
+    func customData(_ dt: Int) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .full
+        dateFormatter.timeStyle = .none
+        dateFormatter.locale = Locale(identifier: "en_US")
+        
+        let datekoi = Date(timeIntervalSince1970: TimeInterval(dt))
+        
+        let customDate = dateFormatter.string(from: datekoi)
+        
+        return customDate
+        
+        //pegar o date
+    }
     
     func getWeatherByLocation(_ local: String) {
         weatherRepository.fetchByLocal(local: localName ?? "") { weatherDetails in
@@ -33,7 +47,6 @@ public class HomeViewModel {
                 return
             }
             self.weatherResults.value = weatherDetails.map{ WeatherViewModel($0)
-        
             }
             
         }

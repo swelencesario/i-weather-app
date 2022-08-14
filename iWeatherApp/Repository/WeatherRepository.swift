@@ -36,9 +36,11 @@ public class WeatherRepository: WeatherRepositoryProtocol {
             let currentTemp = decodedData.main.temp
             let minTemp = decodedData.main.temp_min
             let maxTemp = decodedData.main.temp_max
+            let dt = decodedData.dt
             let timezone = decodedData.timezone
+            let name = decodedData.name
             
-            let weather = WeatherModel(id: id, mainDescription: description, icon: icon, currentWeather: currentTemp, tempMin: minTemp, tempMax: maxTemp, localTimezone: timezone)
+            let weather = WeatherModel(id: id, mainDescription: description, icon: icon, currentWeather: currentTemp, tempMin: minTemp, tempMax: maxTemp, dt: dt, localTimezone: timezone, name: name)
             
             return weather
         } catch {

@@ -221,6 +221,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="currentDate" destination="qUG-ec-Jnl" id="0Rz-bK-Hz3"/>
                         <outlet property="currentTemp" destination="r01-Ga-lVE" id="XQ5-hn-m5U"/>
                         <outlet property="currentWeatherView" destination="b6C-C5-NuR" id="PQI-dV-xiL"/>
                         <outlet property="descriptionLabel" destination="Frj-51-4Vh" id="kpV-mg-6oK"/>
