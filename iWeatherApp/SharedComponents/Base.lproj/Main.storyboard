@@ -123,26 +123,26 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="FdR-8Q-MnB">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="FdR-8Q-MnB">
                                 <rect key="frame" x="30" y="277.66666666666674" width="354" height="442.33333333333326"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="weeklyCellIdentifier" id="B9x-wg-4gG" customClass="WeeklyWeatherTbCell" customModule="iWeatherApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.666666030883789" width="354" height="43.666667938232422"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="weeklyCellIdentifier" rowHeight="50" id="B9x-wg-4gG" customClass="WeeklyWeatherTbCell" customModule="iWeatherApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.666666030883789" width="354" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="B9x-wg-4gG" id="rqr-9B-eNP">
-                                            <rect key="frame" x="0.0" y="0.0" width="354" height="43.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="354" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thu, May 5th" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ad-nE-90a">
-                                                    <rect key="frame" x="8" y="14.666666666666664" width="338" height="14.333333333333336"/>
+                                                    <rect key="frame" x="8" y="18" width="338" height="14.333333333333336"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sun.min.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="GMW-iN-Zsl">
-                                                    <rect key="frame" x="157" y="2.9999999999999964" width="40" height="38.333333333333329"/>
+                                                    <rect key="frame" x="157" y="5.9999999999999964" width="40" height="38.333333333333329"/>
                                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="40" id="9ZG-GE-HVk"/>
@@ -150,7 +150,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="PKQ-e5-e9y">
-                                                    <rect key="frame" x="244" y="14.333333333333336" width="102" height="15"/>
+                                                    <rect key="frame" x="244" y="17.666666666666668" width="102" height="15.000000000000004"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="H: 24 C" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Q4-fy-g7i">
                                                             <rect key="frame" x="0.0" y="0.0" width="43" height="15"/>
@@ -221,7 +221,13 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="currentTemp" destination="r01-Ga-lVE" id="XQ5-hn-m5U"/>
                         <outlet property="currentWeatherView" destination="b6C-C5-NuR" id="PQI-dV-xiL"/>
+                        <outlet property="descriptionLabel" destination="Frj-51-4Vh" id="kpV-mg-6oK"/>
+                        <outlet property="iconImage" destination="2oC-17-VYz" id="Qb9-cb-4K2"/>
+                        <outlet property="localNameLabel" destination="KXN-hg-V1i" id="Urj-ik-xCM"/>
+                        <outlet property="maxTempLabel" destination="Lbs-ur-I0f" id="hQ0-dj-n5w"/>
+                        <outlet property="minTemp" destination="FbN-U2-YUS" id="UFf-H8-qiC"/>
                         <outlet property="tableView" destination="FdR-8Q-MnB" id="v1o-hp-WRA"/>
                     </connections>
                 </viewController>

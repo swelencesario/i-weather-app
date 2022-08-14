@@ -31,14 +31,14 @@ public class WeatherRepository: WeatherRepositoryProtocol {
         do {
             let decodedData = try decoder.decode(WeatherData.self, from: weatherData)
             let id = decodedData.weather[0].id
-            let description = decodedData.weather.description
+            let description = decodedData.weather[0].description
             let icon = decodedData.weather[0].icon
             let currentTemp = decodedData.main.temp
             let minTemp = decodedData.main.temp_min
             let maxTemp = decodedData.main.temp_max
             let timezone = decodedData.timezone
             
-            let weather = WeatherModel(id: id, description: description, icon: icon, currentWeather: currentTemp, tempMin: minTemp, tempMax: maxTemp, localTimezone: timezone)
+            let weather = WeatherModel(id: id, mainDescription: description, icon: icon, currentWeather: currentTemp, tempMin: minTemp, tempMax: maxTemp, localTimezone: timezone)
             
             return weather
         } catch {

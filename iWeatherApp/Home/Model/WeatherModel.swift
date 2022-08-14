@@ -8,16 +8,16 @@
 import Foundation
 
 public struct WeatherModel {
-    let id: Int?
-    let description: String?
-    let icon: String?
-    let currentWeather: Double?
+    var id: Int?
+    var mainDescription: String?
+    var icon: String?
+    var currentWeather: Double?
     //let latitude: Float
     //let longitude: Float
     
-    let tempMin: Double?
-    let tempMax: Double?
-    let localTimezone: Int
+    var tempMin: Double?
+    var tempMax: Double?
+    var localTimezone: Int
     
     //previsão dos próximos dias*
     

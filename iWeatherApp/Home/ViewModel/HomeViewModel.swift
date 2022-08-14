@@ -11,7 +11,7 @@ public class HomeViewModel {
     
     var loading = Observable<Bool>(false)
     var weatherDate = Observable<String?>(nil)
-    var localName: String = "London"
+    var localName: String?
     var icon = Observable<URL>?(nil)
     var weatherDescription = Observable<String?>(nil)
     var maxTemp = Observable<Double?>(nil)
@@ -27,12 +27,14 @@ public class HomeViewModel {
     
     
     func getWeatherByLocation(_ local: String) {
-        weatherRepository.fetchByLocal(local: localName) { weatherDetails in
+        weatherRepository.fetchByLocal(local: localName ?? "") { weatherDetails in
             guard local.count > 0 else {
                 print("tratar o erro")
                 return
             }
-            self.weatherResults.value = weatherDetails.map{ WeatherViewModel(weather: $0) }
+            self.weatherResults.value = weatherDetails.map{ WeatherViewModel($0)
+        
+            }
             
         }
             

@@ -16,6 +16,12 @@ class HomeViewController: UIViewController {
         }
     }
     
+    @IBOutlet weak var minTemp: UILabel!
+    @IBOutlet weak var currentTemp: UILabel!
+    @IBOutlet weak var maxTempLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var iconImage: UIImageView!
+    @IBOutlet weak var localNameLabel: UILabel!
     @IBOutlet weak var currentWeatherView: UIView!
     
     @IBOutlet weak var tableView: UITableView!
@@ -44,7 +50,11 @@ let repository = WeatherRepository()
             guard let weatherResults = weatherResults else { return }
             
             self?.weatherResults = weatherResults
-            
+            self?.currentTemp.text = String(weatherResults[0].currentTemp)
+            self?.maxTempLabel.text = String(weatherResults[0].maxTemp)
+            self?.minTemp.text = String(weatherResults[0].minTemp)
+            self?.descriptionLabel.text = weatherResults[0].mainDescription
+            print(weatherResults[0].mainDescription)
         }
         
     }

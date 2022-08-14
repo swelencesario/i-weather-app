@@ -11,14 +11,18 @@ public class WeatherViewModel {
     
     var weekDay: String
     var icon: String
+    var currentTemp: Double
     var maxTemp: Double
     var minTemp: Double
+    var mainDescription: String
     
-    init(weather: WeatherModel) {
+    
+    init(_ weather: WeatherModel) {
         self.weekDay = ""
         self.icon = weather.icon ?? ""
         self.maxTemp = weather.tempMax ?? 0.0
         self.minTemp = weather.tempMin ?? 0.0
-        
+        self.currentTemp = weather.currentWeather ?? 0.0
+        self.mainDescription = weather.mainDescription ?? ""
     }
 }
