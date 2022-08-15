@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 public class WeatherViewModel {
     
@@ -17,6 +18,7 @@ public class WeatherViewModel {
     var mainDescription: String
     var localName: String
     var dt: Int
+    var iconPath: String
     
     init(_ weather: WeatherModel) {
         self.weekDay = ""
@@ -27,6 +29,7 @@ public class WeatherViewModel {
         self.mainDescription = weather.mainDescription ?? ""
         self.localName = weather.name
         self.dt = weather.dt
-        
+        self.iconPath = "https://openweathermap.org/img/wn/\(icon)@2x.png"
     }
 }
+

@@ -30,20 +30,9 @@ class HomeViewController: UIViewController {
 let repository = WeatherRepository()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        self.repository.fetchByLocal(local: "London") { (weatherData) in
-//            print("tentei")
-//        self.repository.fetchByLocal(local: "London") { local in
-//            print("al")
-//
-//        }
-            
+ 
         self.bindElements()
         self.initialSetup()
-        
-            
-        
-
     }
 
     private func initialSetup() {
@@ -62,16 +51,12 @@ let repository = WeatherRepository()
             self?.minTemp.text = String(weatherResults[0].minTemp)
             self?.descriptionLabel.text = weatherResults[0].mainDescription
             self?.localNameLabel.text = weatherResults[0].localName
-            
+            self?.iconImage.loadFrom(URLAddress: weatherResults[0].iconPath)
             self?.currentDate.text = self?.viewModel.customData(weatherResults[0].dt)
         
             print(weatherResults[0].mainDescription)
         }
-        
     }
-    
-    
-    
 }
 
 extension HomeViewController: UITableViewDataSource {
@@ -95,5 +80,18 @@ extension HomeViewController: UITableViewDelegate {
     }
 }
 
-
+extension UIImageView {
+    func loadFrom(URLAddress: String) {
+        guard let url = URL(string: URLAddress) else {
+            return
+        }
+        DispatchQueue.main.async { [weak self] in
+            if let imageData = try? Data(contentsOf: url) {
+                if let loadedImage = UIImage(data: imageData) {
+                    self?.image = loadedImage
+                }
+            }
+        }
+    }
+}
 

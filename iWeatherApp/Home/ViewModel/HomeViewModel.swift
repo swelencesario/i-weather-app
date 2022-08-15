@@ -27,7 +27,7 @@ public class HomeViewModel {
     
     func customData(_ dt: Int) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .full
+        dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .none
         dateFormatter.locale = Locale(identifier: "en_US")
         
