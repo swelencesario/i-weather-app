@@ -10,20 +10,44 @@ import Alamofire
 
 public class WeatherRepository: WeatherRepositoryProtocol {
     public func fetchByLocal(local: String, completion: @escaping ([WeatherModel]) -> ()) {
-        let dictionaryLocal = ["by_city": local]
-        AF.request(RepositoryConstants.baseUrl, method: .get, parameters: dictionaryLocal)
-            .responseData { (response) in
+        var urlBuilder = URLComponents()
+        urlBuilder.scheme = "https"
+        urlBuilder.host = RepositoryConstants.host
+        urlBuilder.path = RepositoryConstants.path
+        urlBuilder.queryItems = [
+            URLQueryItem(name: "appid", value: RepositoryConstants.API_KEY),
+            URLQueryItem(name: "units", value: RepositoryConstants.units),
+            URLQueryItem(name: "q", value: local)
+        ]
+        let url = urlBuilder.url!
+        
+        AF.request(url).validate()
+            .responseDecodable(of: WeatherData.self, queue: .main, decoder: JSONDecoder()) { (response) in
                 switch response.result {
-                case .success(_):
-                    if let data = response.data {
-                        let decoded = self.parseJSON(data) //TODO: - ação de atualizar o tempo.
-                        completion([decoded!])
-                        print(decoded!)
-                    }
+                case .success(let weatherData):
+                    let weatherModel = weatherData.model
+                    completion([weatherModel])
+                    print(completion)
                 case .failure(_):
                     completion([])
                 }
+              
+                }
             }
+//        let dictionaryLocal = ["by_city": local]
+//        AF.request(RepositoryConstants.baseUrl, method: .get, parameters: dictionaryLocal)
+//            .responseData { (response) in
+//                switch response.result {
+//                case .success(_):
+//                    if let data = response.data {
+//                        let decoded = self.parseJSON(data) //TODO: - ação de atualizar o tempo.
+//                        completion([decoded!])
+//                        print(decoded!)
+//                    }
+//                case .failure(_):
+//                    completion([])
+//                }
+//            }
     }
     
     func parseJSON(_ weatherData: Data) -> WeatherModel? {
@@ -47,5 +71,5 @@ public class WeatherRepository: WeatherRepositoryProtocol {
             return nil
         }
     }
-}
+
 

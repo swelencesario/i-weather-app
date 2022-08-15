@@ -8,11 +8,16 @@
 import Foundation
 
 public struct WeatherData: Codable {
+   
     let name: String
     let timezone: Int
     let main: Main
     let weather: [Weather]
     let dt: Int
+    
+    var model: WeatherModel {
+        return WeatherModel(id: weather.first?.id, mainDescription: weather.first?.description, icon: weather.first?.icon, currentWeather: main.temp, tempMin: main.temp_min, tempMax: main.temp_max, dt: dt, localTimezone: timezone, name: name)
+    }
 }
 
 public struct Main: Codable {

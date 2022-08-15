@@ -33,9 +33,12 @@ let repository = WeatherRepository()
         
 //        self.repository.fetchByLocal(local: "London") { (weatherData) in
 //            print("tentei")
+        self.repository.fetchByLocal(local: "London") { local in
+            print("al")
             
+        }
             self.initialSetup()
-            self.viewModel.getWeatherByLocation("London")
+//            self.viewModel.getWeatherByLocation("London")
             self.bindElements()
         
 
