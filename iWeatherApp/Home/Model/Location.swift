@@ -1,28 +1,29 @@
+////
+////  Location.swift
+////  iWeatherApp
+////
+////  Created by Swelen Poliana Cesario Ebert on 11/08/22.
+////
 //
-//  Location.swift
-//  iWeatherApp
+//import Foundation
 //
-//  Created by Swelen Poliana Cesario Ebert on 11/08/22.
+//import CoreLocation
 //
-
-import Foundation
-
-import CoreLocation
-
-struct Location {
-  let name: String
-  let latitude: Double
-  let longitude: Double
-  
-  var location: CLLocation {
-    return CLLocation(latitude: latitude, longitude: longitude)
-  }
-}
-
-extension Location: Equatable {
-  static func ==(lhs: Location, rhs: Location) -> Bool {
-    return lhs.name == rhs.name &&
-      lhs.latitude == rhs.latitude &&
-      lhs.longitude == rhs.longitude
-  }
-}
+//struct Location {
+//  let name: String
+//  let latitude: Double
+//  let longitude: Double
+//  
+//  var location: CLLocation {
+//    return CLLocation(latitude: latitude, longitude: longitude)
+//  }
+//}
+//
+//extension Location: Equatable {
+//  static func ==(lhs: Location, rhs: Location) -> Bool {
+//    return lhs.name == rhs.name &&
+//      lhs.latitude == rhs.latitude &&
+//      lhs.longitude == rhs.longitude
+//  }
+//}
+//

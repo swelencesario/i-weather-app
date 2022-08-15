@@ -6,9 +6,12 @@
 //
 
 import UIKit
+import CoreLocation
 
 class HomeViewController: UIViewController {
-   
+    
+    var locationManager = CLLocationManager()
+    
     var viewModel = HomeViewModel()
     var weatherResults = [WeatherViewModel]() {
         didSet {
@@ -30,13 +33,18 @@ class HomeViewController: UIViewController {
 let repository = WeatherRepository()
     override func viewDidLoad() {
         super.viewDidLoad()
- 
+        
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.requestLocation()
+        
+        self.viewModel.getWeatherByLocation("London")
         self.bindElements()
         self.initialSetup()
     }
 
     private func initialSetup() {
-        self.viewModel.getWeatherByLocation("London")
+        
         tableView.delegate = self
         tableView.dataSource = self
     }
@@ -95,3 +103,24 @@ extension UIImageView {
     }
 }
 
+extension HomeViewController: CLLocationManagerDelegate {
+    
+    @IBAction func locationPressed(_ sender: UIButton) {
+        locationManager.requestLocation()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.last {
+            locationManager.stopUpdatingLocation()
+            let lat = String(location.coordinate.latitude)
+            let lon = String(location.coordinate.longitude)
+            repository.fetchByCoreLocation(longitude: lon, latitude: lat) { re in
+                print("Sucesso")
+            }
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(error)
+    }
+}
