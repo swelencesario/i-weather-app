@@ -12,6 +12,8 @@ public class HomeViewModel {
     var loading = Observable<Bool>(false)
     var weatherDate = Observable<String?>(nil)
     var localName: String?
+    var latitude: String?
+    var longitude: String?
     var icon = Observable<URL>?(nil)
     var weatherDescription = Observable<String?>(nil)
     var maxTemp = Observable<Double?>(nil)
@@ -38,11 +40,15 @@ public class HomeViewModel {
         return customDate
     }
     
-    func parseData(_ details: WeatherModel){
-        weatherDescription.value = details.mainDescription
-    }
-    func getWeatherByLocation(_ local: String) {
+    func getWeatherByCity(_ local: String) {
         weatherRepository.fetchByLocal(local: local) { weatherDetails in
+            self.weatherResults.value = weatherDetails.map{ WeatherViewModel($0)
+            }
+        }
+    }
+    
+    func getWeatherByCoreLocation(_ longitude: String, _ latitude: String) {
+        weatherRepository.fetchByCoreLocation(longitude: longitude, latitude: latitude) { weatherDetails in
             self.weatherResults.value = weatherDetails.map{ WeatherViewModel($0)
             }
         }

@@ -26,7 +26,11 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var iconImage: UIImageView!
     @IBOutlet weak var localNameLabel: UILabel!
-    @IBOutlet weak var currentWeatherView: UIView!
+    @IBOutlet weak var currentWeatherView: UIView! {
+        didSet {
+            currentWeatherView.layer.cornerRadius = 22
+        }
+    }
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -34,17 +38,15 @@ let repository = WeatherRepository()
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.requestLocation()
-        
-        self.viewModel.getWeatherByLocation("London")
-        self.bindElements()
         self.initialSetup()
+        self.bindElements()
+        
     }
 
     private func initialSetup() {
-        
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.requestLocation()
         tableView.delegate = self
         tableView.dataSource = self
     }
@@ -54,9 +56,9 @@ let repository = WeatherRepository()
             guard let weatherResults = weatherResults else { return }
             
             self?.weatherResults = weatherResults
-            self?.currentTemp.text = String(weatherResults[0].currentTemp)
-            self?.maxTempLabel.text = String(weatherResults[0].maxTemp)
-            self?.minTemp.text = String(weatherResults[0].minTemp)
+            self?.currentTemp.text = String(weatherResults[0].temperatureString) + "°C"
+            self?.maxTempLabel.text = "H: " + String(weatherResults[0].maxString) + "°C"
+            self?.minTemp.text = "H: " + String(weatherResults[0].minString) + "°C"
             self?.descriptionLabel.text = weatherResults[0].mainDescription
             self?.localNameLabel.text = weatherResults[0].localName
             self?.iconImage.loadFrom(URLAddress: weatherResults[0].iconPath)
@@ -114,10 +116,8 @@ extension HomeViewController: CLLocationManagerDelegate {
             locationManager.stopUpdatingLocation()
             let lat = String(location.coordinate.latitude)
             let lon = String(location.coordinate.longitude)
-            repository.fetchByCoreLocation(longitude: lon, latitude: lat) { re in
-                print("Sucesso")
+            viewModel.getWeatherByCoreLocation(lon, lat)
             }
-        }
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

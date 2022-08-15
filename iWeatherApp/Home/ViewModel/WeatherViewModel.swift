@@ -20,6 +20,18 @@ public class WeatherViewModel {
     var dt: Int
     var iconPath: String
     
+    var temperatureString: String {
+        return String(format: "%.0f", currentTemp)
+    }
+    
+    var maxString: String {
+        return String(format: "%.0f", maxTemp)
+    }
+    
+    var minString: String {
+        return String(format: "%.0f", minTemp)
+    }
+    
     init(_ weather: WeatherModel) {
         self.weekDay = ""
         self.icon = weather.icon ?? ""

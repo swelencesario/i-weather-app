@@ -19,6 +19,13 @@ class WeeklyWeatherTbCell: UITableViewCell {
     
     @IBOutlet weak var minTemLabel: UILabel!
     
+    @IBOutlet weak var contentCell: UIView! {
+        didSet {
+            contentCell.layer.cornerRadius = 12
+        }
+    }
+    
+    
     func setup(_ viewModel: WeatherViewModel) {
         dateLabel.text = viewModel.weekDay
         //icon.image =
