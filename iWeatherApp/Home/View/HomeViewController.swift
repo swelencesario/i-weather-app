@@ -33,18 +33,21 @@ let repository = WeatherRepository()
         
 //        self.repository.fetchByLocal(local: "London") { (weatherData) in
 //            print("tentei")
-        self.repository.fetchByLocal(local: "London") { local in
-            print("al")
+//        self.repository.fetchByLocal(local: "London") { local in
+//            print("al")
+//
+//        }
             
-        }
-            self.initialSetup()
-//            self.viewModel.getWeatherByLocation("London")
-            self.bindElements()
+        self.bindElements()
+        self.initialSetup()
+        
+            
         
 
     }
 
     private func initialSetup() {
+        self.viewModel.getWeatherByLocation("London")
         tableView.delegate = self
         tableView.dataSource = self
     }

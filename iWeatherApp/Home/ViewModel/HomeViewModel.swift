@@ -39,17 +39,23 @@ public class HomeViewModel {
         
         //pegar o date
     }
-    
+    func parseData(_ details: WeatherModel){
+        weatherDescription.value = details.mainDescription
+    }
     func getWeatherByLocation(_ local: String) {
-        weatherRepository.fetchByLocal(local: localName ?? "") { weatherDetails in
-            guard local.count > 0 else {
-                print("tratar o erro")
-                return
-            }
+        weatherRepository.fetchByLocal(local: local) { weatherDetails in
             self.weatherResults.value = weatherDetails.map{ WeatherViewModel($0)
-            }
-            
         }
+//        weatherRepository.fetchByLocal(local: localName ?? "") { weatherDetails in
+//            guard local.count > 0 else {
+//                print("tratar o erro")
+//                return
+//            }
+//            self.weatherResults.value = weatherDetails.map{ WeatherViewModel($0)
+//            }
+//
+//        }
             
     }
+}
 }

@@ -27,7 +27,7 @@ public class WeatherRepository: WeatherRepositoryProtocol {
                 case .success(let weatherData):
                     let weatherModel = weatherData.model
                     completion([weatherModel])
-                    print(completion)
+                    debugPrint(response)
                 case .failure(_):
                     completion([])
                 }

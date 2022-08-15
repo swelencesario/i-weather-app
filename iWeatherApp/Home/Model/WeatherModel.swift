@@ -19,8 +19,6 @@ public struct WeatherModel {
 
     var tempMin: Double?
     var tempMax: Double?
-
-    //colocar o dt
     var dt: Int
     var localTimezone: Int
     var name: String

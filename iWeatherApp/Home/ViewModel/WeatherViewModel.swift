@@ -15,7 +15,7 @@ public class WeatherViewModel {
     var maxTemp: Double
     var minTemp: Double
     var mainDescription: String
-    var localName = "London"
+    var localName: String
     var dt: Int
     
     init(_ weather: WeatherModel) {
