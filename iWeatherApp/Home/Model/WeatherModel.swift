@@ -10,7 +10,7 @@ import Foundation
 public struct WeatherModel {
     
    
-    var id: Int?
+    var conditionId: Int
     var mainDescription: String?
     var icon: String?
     var currentWeather: Double?
@@ -22,7 +22,23 @@ public struct WeatherModel {
     var dt: Int
     var localTimezone: Int
     var name: String
-//
-    //previsão dos próximos dias*
     
+    var conditionImage: String {
+        switch conditionId {
+        case 200...299:
+            return "imThunderstorm"
+        case 300...399:
+            return "imDrizzle"
+        case 500...599:
+            return "imRain"
+        case 600...699:
+            return "imSnow"
+        case 700...799:
+            return "imAtmosphere"
+        case 800:
+            return "imClear"
+        default:
+            return "imClouds"
+        }
+    }
 }

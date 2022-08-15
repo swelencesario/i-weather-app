@@ -16,7 +16,7 @@ public struct WeatherData: Codable {
     let dt: Int
     
     var model: WeatherModel {
-        return WeatherModel(id: weather.first?.id, mainDescription: weather.first?.description, icon: weather.first?.icon, currentWeather: main.temp, tempMin: main.temp_min, tempMax: main.temp_max, dt: dt, localTimezone: timezone, name: name)
+        return WeatherModel(conditionId: weather.first?.id ?? 0, mainDescription: weather.first?.description, icon: weather.first?.icon, currentWeather: main.temp, tempMin: main.temp_min, tempMax: main.temp_max, dt: dt, localTimezone: timezone, name: name)
     }
 }
 
