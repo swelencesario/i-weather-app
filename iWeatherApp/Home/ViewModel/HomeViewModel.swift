@@ -33,9 +33,9 @@ public class HomeViewModel {
         dateFormatter.timeStyle = .none
         dateFormatter.locale = Locale(identifier: "en_US")
         
-        let datekoi = Date(timeIntervalSince1970: TimeInterval(dt))
+        let dateToday = Date(timeIntervalSince1970: TimeInterval(dt))
         
-        let customDate = dateFormatter.string(from: datekoi)
+        let customDate = dateFormatter.string(from: dateToday)
         
         return customDate
     }

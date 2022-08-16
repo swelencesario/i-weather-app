@@ -76,7 +76,7 @@ extension HomeViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "weeklyCellIdentifier", for: indexPath) as? WeeklyWeatherTbCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "weeklyCellIdentifier", for: indexPath) as? ForecastTbCell
         cell?.setup(weatherResults[indexPath.row])
         return cell ?? UITableViewCell()
     }
@@ -117,6 +117,10 @@ extension HomeViewController: CLLocationManagerDelegate {
             let lat = String(location.coordinate.latitude)
             let lon = String(location.coordinate.longitude)
             viewModel.getWeatherByCoreLocation(lon, lat)
+            let foreRepository = ForecastRepository()
+            foreRepository.fetchFiveDaysForecast(longitude: lon, latitude: lat) { re in
+            print("deu certo")
+            }
             }
     }
     

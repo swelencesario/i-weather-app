@@ -7,7 +7,7 @@
 
 import UIKit
 
-class WeeklyWeatherTbCell: UITableViewCell {
+class ForecastTbCell: UITableViewCell {
     
     var viewModel: WeatherViewModel?
  
