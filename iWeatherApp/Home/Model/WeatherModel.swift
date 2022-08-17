@@ -8,20 +8,16 @@
 import Foundation
 
 public struct WeatherModel {
-    
-   
-    var conditionId: Int
-    var mainDescription: String?
-    var icon: String?
-    var currentWeather: Double?
-    //let latitude: Float
-    //let longitude: Float
-
-    var tempMin: Double?
-    var tempMax: Double?
     var dt: Int
-    var localTimezone: Int
-    var name: String
+
+    var currentWeather: Double
+    var minTemp: Double
+    var maxTemp: Double
+    var conditionId: Int
+    var weatherDescription: String
+    var weatherIcon: String
+    var localName: String
+    
     
     var conditionImage: String {
         switch conditionId {
@@ -42,3 +38,5 @@ public struct WeatherModel {
         }
     }
 }
+
+

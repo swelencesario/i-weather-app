@@ -13,7 +13,7 @@ public class WeatherRepository: WeatherRepositoryProtocol {
         var urlBuilder = URLComponents()
         urlBuilder.scheme = "https"
         urlBuilder.host = RepositoryConstants.host
-        urlBuilder.path = RepositoryConstants.path
+        urlBuilder.path = RepositoryConstants.forecastPath
         urlBuilder.queryItems = [
             URLQueryItem(name: "appid", value: RepositoryConstants.API_KEY),
             URLQueryItem(name: "units", value: RepositoryConstants.units),
@@ -26,7 +26,7 @@ public class WeatherRepository: WeatherRepositoryProtocol {
                 switch response.result {
                 case .success(let weatherData):
                     let weatherModel = weatherData.model
-                    completion([weatherModel])
+                    completion(weatherModel)
                     debugPrint(response)
                 case .failure(_):
                     completion([])
@@ -39,7 +39,7 @@ public class WeatherRepository: WeatherRepositoryProtocol {
         var urlBuilder = URLComponents()
         urlBuilder.scheme = "https"
         urlBuilder.host = RepositoryConstants.host
-        urlBuilder.path = RepositoryConstants.path
+        urlBuilder.path = RepositoryConstants.forecastPath
         urlBuilder.queryItems = [
             URLQueryItem(name: "appid", value: RepositoryConstants.API_KEY),
             URLQueryItem(name: "units", value: RepositoryConstants.units),
@@ -53,15 +53,12 @@ public class WeatherRepository: WeatherRepositoryProtocol {
                 switch response.result {
                 case .success(let weatherData):
                     let weatherModel = weatherData.model
-                    completion([weatherModel])
+                    completion(weatherModel)
                     debugPrint(response)
                 case .failure(_):
                     completion([])
                 }
-                
             }
     }
 }
-
-
 

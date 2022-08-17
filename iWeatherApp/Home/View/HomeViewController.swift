@@ -13,11 +13,13 @@ class HomeViewController: UIViewController {
     var locationManager = CLLocationManager()
     
     var viewModel = HomeViewModel()
-    var weatherResults = [WeatherViewModel]() {
+    
+    var weatherResults = [WeatherItemsViewModel]() {
         didSet {
             tableView.reloadData()
         }
     }
+
     
     @IBOutlet weak var currentDate: UILabel!
     @IBOutlet weak var minTemp: UILabel!
@@ -37,7 +39,6 @@ class HomeViewController: UIViewController {
 let repository = WeatherRepository()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.initialSetup()
         self.bindElements()
         
@@ -62,9 +63,10 @@ let repository = WeatherRepository()
             self?.descriptionLabel.text = weatherResults[0].mainDescription
             self?.localNameLabel.text = weatherResults[0].localName
             self?.iconImage.loadFrom(URLAddress: weatherResults[0].iconPath)
-            self?.currentDate.text = self?.viewModel.customData(weatherResults[0].dt)
+            self?.currentDate.text = self?.viewModel.customDate(weatherResults[0].dt ?? 0)
+            
         
-            print(weatherResults[0].mainDescription)
+            print(weatherResults[0].mainDescription!)
         }
     }
 }
@@ -77,7 +79,7 @@ extension HomeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "weeklyCellIdentifier", for: indexPath) as? ForecastTbCell
-        cell?.setup(weatherResults[indexPath.row])
+        cell?.setup((weatherResults[indexPath.row]))
         return cell ?? UITableViewCell()
     }
     
@@ -117,10 +119,7 @@ extension HomeViewController: CLLocationManagerDelegate {
             let lat = String(location.coordinate.latitude)
             let lon = String(location.coordinate.longitude)
             viewModel.getWeatherByCoreLocation(lon, lat)
-            let foreRepository = ForecastRepository()
-            foreRepository.fetchFiveDaysForecast(longitude: lon, latitude: lat) { re in
-            print("deu certo")
-            }
+            
             }
     }
     

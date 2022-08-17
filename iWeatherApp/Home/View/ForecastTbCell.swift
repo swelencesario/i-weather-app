@@ -9,7 +9,7 @@ import UIKit
 
 class ForecastTbCell: UITableViewCell {
     
-    var viewModel: WeatherViewModel?
+    var viewModel: WeatherItemsViewModel?
  
     @IBOutlet weak var dateLabel: UILabel!
     
@@ -25,11 +25,12 @@ class ForecastTbCell: UITableViewCell {
         }
     }
     
-    
-    func setup(_ viewModel: WeatherViewModel) {
-        dateLabel.text = viewModel.weekDay
+    func setup(_ viewModel: WeatherItemsViewModel) {
+        dateLabel.text = viewModel.stringDate(viewModel.dt ?? 0)
         //icon.image =
-        maxTempLabel.text = String(viewModel.maxTemp)
-        minTemLabel.text = String(viewModel.minTemp)
-    }
+        maxTempLabel.text = "H: " + String(viewModel.maxTemp) + "°C"
+        minTemLabel.text = "L: " + String(viewModel.minTemp) + "°C"
+        
+   }
 }
+
