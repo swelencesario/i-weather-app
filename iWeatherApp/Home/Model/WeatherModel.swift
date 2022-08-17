@@ -7,9 +7,8 @@
 
 import Foundation
 
-public struct WeatherModel {
+public struct WeatherModel: Codable {
     var dt: Int
-
     var currentWeather: Double
     var minTemp: Double
     var maxTemp: Double
@@ -36,6 +35,19 @@ public struct WeatherModel {
         default:
             return "imClouds"
         }
+    }
+    
+    enum Codinkeys: String, CodingKey {
+       
+        case dt = "dt"
+        case currentWeather = "temp"
+        case minTemp = "temp_min"
+        case maxTemp = "temp_max"
+        case conditionId = "id"
+        case weatherDescription = "description"
+        case weatherIcon = "icon"
+        case localName = "name"
+        
     }
 }
 

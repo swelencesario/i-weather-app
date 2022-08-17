@@ -51,7 +51,7 @@ public class WeatherItemsViewModel {
         dateFormatter.timeStyle = .none
         dateFormatter.locale = Locale(identifier: "en_US")
         
-        let dateToday = Date(timeIntervalSinceReferenceDate: TimeInterval(dt))
+        let dateToday = Date(timeIntervalSince1970: TimeInterval(dt))
         
         let customDate = dateFormatter.string(from: dateToday)
         
