@@ -9,7 +9,7 @@ import UIKit
 
 class ForecastTbCell: UITableViewCell {
     
-    var viewModel: WeatherItemsViewModel?
+    //var viewModel: WeatherItemsViewModel?
  
     @IBOutlet weak var dateLabel: UILabel!
     
@@ -33,4 +33,5 @@ class ForecastTbCell: UITableViewCell {
         
    }
 }
+
 

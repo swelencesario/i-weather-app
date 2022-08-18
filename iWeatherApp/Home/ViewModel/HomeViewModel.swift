@@ -33,17 +33,20 @@ public class HomeViewModel {
         return customDate
     }
     
-    func getWeatherByCity(_ local: String) {
-        weatherRepository.fetchByLocal(local: local) { weatherDetails in
-            self.weatherResults.value = weatherDetails.map{ WeatherItemsViewModel($0)
-            }
-        }
-    }
+    //    func getWeatherByCity(_ local: String) {
+    //        weatherRepository.fetchByLocal(local: local) { weatherDetails in
+    //            self.weatherResults.value = weatherDetails.map{ WeatherItemsViewModel($0)
+    //            }
+    //        }
+    //    }
     
     func getWeatherByCoreLocation(_ longitude: String, _ latitude: String) {
         weatherRepository.fetchByCoreLocation(longitude: longitude, latitude: latitude) { weatherDetails in
-            self.weatherResults.value = weatherDetails.map{ WeatherItemsViewModel($0)
-            }
+            
+            self.weatherResults.value = weatherDetails.map{ WeatherItemsViewModel($0)}
         }
+        
     }
+
+
 }

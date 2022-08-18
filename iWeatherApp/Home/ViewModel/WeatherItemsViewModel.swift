@@ -19,28 +19,28 @@ public class WeatherItemsViewModel {
     var localName: String?
     var dt: Int?
     var iconPath: String
-    
+
     var temperatureString: String {
         return String(format: "%.0f", currentTemp)
     }
-    
+
     var maxString: String {
         return String(format: "%.0f", maxTemp)
     }
-    
+
     var minString: String {
         return String(format: "%.0f", minTemp)
     }
     
-    init(_ weather: WeatherModel) {
+    init(_ weather: WeatherData) {
        
-        self.icon = weather.weatherIcon
-        self.maxTemp = weather.maxTemp
-        self.minTemp = weather.minTemp
-        self.currentTemp = weather.currentWeather
-        self.mainDescription = weather.weatherDescription
-        self.localName = weather.localName
-        self.dt = weather.dt
+        self.icon = weather.list.first?.weather.first?.icon ?? ""
+        self.maxTemp = weather.list.first?.main.temp_max ?? 0.0
+        self.minTemp = weather.list.first?.main.temp_min ?? 0.0
+        self.currentTemp = weather.list.first?.main.temp ?? 0.0
+        self.mainDescription = weather.list.first?.weather.first?.description
+        self.localName = weather.city.name
+        self.dt = weather.list.first?.dt
         self.iconPath = "https://openweathermap.org/img/wn/\(icon)@2x.png"
         
     }
@@ -57,5 +57,6 @@ public class WeatherItemsViewModel {
         
         return customDate
     }
-}
 
+
+}

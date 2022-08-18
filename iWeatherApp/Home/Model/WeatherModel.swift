@@ -9,17 +9,16 @@ import Foundation
 
 public struct WeatherModel: Codable {
     var dt: Int
-    var currentWeather: Double
+    var temp: Double
     var minTemp: Double
     var maxTemp: Double
-    var conditionId: Int
+    var weatherId: Int
     var weatherDescription: String
     var weatherIcon: String
-    var localName: String
-    
-    
+    var cityName: String
+
     var conditionImage: String {
-        switch conditionId {
+        switch weatherId {
         case 200...299:
             return "imThunderstorm"
         case 300...399:
@@ -36,18 +35,18 @@ public struct WeatherModel: Codable {
             return "imClouds"
         }
     }
-    
+
     enum Codinkeys: String, CodingKey {
        
-        case dt = "dt"
-        case currentWeather = "temp"
+        case dt
+        case temp
         case minTemp = "temp_min"
         case maxTemp = "temp_max"
-        case conditionId = "id"
+        case weatherId = "id"
         case weatherDescription = "description"
         case weatherIcon = "icon"
-        case localName = "name"
-        
+        case cityName = "name"
+
     }
 }
 

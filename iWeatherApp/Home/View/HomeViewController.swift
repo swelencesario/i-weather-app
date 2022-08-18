@@ -64,9 +64,9 @@ let repository = WeatherRepository()
             self?.localNameLabel.text = weatherResults[0].localName
             self?.iconImage.loadFrom(URLAddress: weatherResults[0].iconPath)
             self?.currentDate.text = self?.viewModel.customDate(weatherResults[0].dt ?? 0)
+//
+//
             
-        
-            print(weatherResults[0].mainDescription!)
         }
     }
 }
