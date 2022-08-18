@@ -51,8 +51,6 @@ class HomeViewController: UIViewController {
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestLocation()
         
-        
-        
         tableView.delegate = self
         tableView.dataSource = self
     }
@@ -70,6 +68,10 @@ class HomeViewController: UIViewController {
             self?.descriptionLabel.text = weatherResults.first?.description
 
         }
+    }
+    
+    private func setSpaceCell() {
+        tableView?.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 12, right: 0)
     }
 }
 
@@ -93,21 +95,6 @@ extension HomeViewController: UITableViewDelegate {
         return
     }
 }
-
-//extension UIImageView {
-//    func loadFrom(URLAddress: String) {
-//        guard let url = URL(string: URLAddress) else {
-//            return
-//        }
-//        DispatchQueue.main.async { [weak self] in
-//            if let imageData = try? Data(contentsOf: url) {
-//                if let loadedImage = UIImage(data: imageData) {
-//                    self?.image = loadedImage
-//                }
-//            }
-//        }
-//    }
-//}
 
 extension HomeViewController: CLLocationManagerDelegate {
     

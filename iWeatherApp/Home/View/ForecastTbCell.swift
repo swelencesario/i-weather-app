@@ -17,17 +17,30 @@ class ForecastTbCell: UITableViewCell {
     
     @IBOutlet weak var minTemLabel: UILabel!
     
+    @IBOutlet weak var containerCell: UIView!{
+        didSet {
+            containerCell.layer.cornerRadius = 12
+            containerCell.layer.masksToBounds = false
+            containerCell.layer.shadowColor = UIColor.black.cgColor
+            containerCell.layer.shadowOpacity = 0.2
+            containerCell.layer.shadowOffset = CGSize(width: 0, height: 1)
+            containerCell.layer.shadowRadius = 1
+        }
+    }
+    
     @IBOutlet weak var contentCell: UIView! {
         didSet {
             contentCell.layer.cornerRadius = 12
+           
         }
     }
     
     func setup(_ viewModel: ListViewModel) {
-        self.dateLabel.text = String(viewModel.dt)
+        self.dateLabel.text = viewModel.weatherDate
         self.maxTempLabel.text = "H: " + String(viewModel.maxTempString) + "°C"
         self.minTemLabel.text = "L: " + String(viewModel.minTempString) + "°C"
         self.icon.loadFrom(URLAddress: "https://openweathermap.org/img/wn/"+"\(viewModel.icon)"+"@2x.png")
+        
    }
 }
 

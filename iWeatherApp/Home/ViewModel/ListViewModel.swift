@@ -8,12 +8,17 @@
 import Foundation
 
 public class ListViewModel {
+    
     var dt: Int
     var icon: String
     var temp_min: Double
     var temp_max: Double
     var temp: Double
     var description: String
+    
+    var weatherDate: String {
+        return Date(timeIntervalSince1970: TimeInterval(dt)).formatted(date: .abbreviated, time: .omitted)
+    }
     
     var currentTemString:String {
         return String(format: "%.0f", temp)
@@ -34,5 +39,6 @@ public class ListViewModel {
         temp_max = list.main.temp_max
         temp = list.main.temp
         description = list.weather.first?.description.capitalized ?? ""
+        
     }
 }

@@ -43,7 +43,7 @@ public class WeatherRepository: WeatherRepositoryProtocol {
         urlBuilder.queryItems = [
             URLQueryItem(name: "appid", value: RepositoryConstants.API_KEY),
             URLQueryItem(name: "units", value: RepositoryConstants.units),
-            URLQueryItem(name: "cnt", value: RepositoryConstants.cnt),
+            //URLQueryItem(name: "cnt", value: RepositoryConstants.cnt),
             URLQueryItem(name: "lat", value: latitude),
             URLQueryItem(name: "lon", value: longitude)
         ]
