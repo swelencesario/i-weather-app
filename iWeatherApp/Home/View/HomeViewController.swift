@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreLocation
+import MapKit
 
 class HomeViewController: UIViewController {
     
@@ -19,7 +20,7 @@ class HomeViewController: UIViewController {
             tableView.reloadData()
         }
     }
-
+    
     
     @IBOutlet weak var currentDate: UILabel!
     @IBOutlet weak var minTemp: UILabel!
@@ -36,36 +37,42 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-let repository = WeatherRepository()
+    let repository = WeatherRepository()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initialSetup()
         self.bindElements()
         
     }
-
+    
     private func initialSetup() {
+        
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestLocation()
+        
+        
+        
         tableView.delegate = self
         tableView.dataSource = self
     }
-
+    
     private func bindElements() {
         viewModel.weatherResults.bind {[weak self] weatherResults in
             guard let weatherResults = weatherResults else { return }
             
             self?.weatherResults = weatherResults
-//            self?.currentTemp.text = String(weatherResults[0].temperatureString) + "°C"
-//            self?.maxTempLabel.text = "H: " + String(weatherResults[0].maxString) + "°C"
-//            self?.minTemp.text = "L: " + String(weatherResults[0].minString) + "°C"
-//            self?.descriptionLabel.text = weatherResults[0].mainDescription
-//            self?.localNameLabel.text = weatherResults[0].localName
-//            self?.iconImage.loadFrom(URLAddress: weatherResults[0].iconPath)
-//            self?.currentDate.text = self?.viewModel.customDate(weatherResults[0].dt ?? 0)
-//
-//
+            self?.currentDate.text = self?.viewModel.customDate(weatherResults.first?.dt ?? 0)
+            self?.iconImage.loadFrom(URLAddress: "https://openweathermap.org/img/wn/"+"\(weatherResults.first?.icon ?? "")"+"@2x.png")
+                        self?.currentTemp.text = String(weatherResults[0].currentTemString) + "°C"
+            self?.maxTempLabel.text = "H: " + String(weatherResults[0].maxTempString) + "°C"
+                        self?.minTemp.text = "L: " + String(weatherResults[0].minTempString) + "°C"
+            self?.descriptionLabel.text = weatherResults.first?.description
+            //            self?.localNameLabel.text = weatherResults[0].localName
+            //            self?.iconImage.loadFrom(URLAddress: weatherResults[0].iconPath)
+            //            self?.currentDate.text = self?.viewModel.customDate(weatherResults[0].dt ?? 0)
+            //
+            //
             
         }
     }
@@ -119,8 +126,14 @@ extension HomeViewController: CLLocationManagerDelegate {
             let lat = String(location.coordinate.latitude)
             let lon = String(location.coordinate.longitude)
             viewModel.getWeatherByCoreLocation(lon, lat)
-            
+        }
+        let myLocation = CLLocation(latitude: locations.first?.coordinate.latitude ?? 0.0, longitude: locations.first?.coordinate.longitude ?? 0.0)
+        myLocation.placemark{ placemark, error in
+            guard let placemark = placemark else {
+                return
             }
+            self.localNameLabel.text = placemark.locality
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -128,3 +141,12 @@ extension HomeViewController: CLLocationManagerDelegate {
     }
 }
 
+extension CLPlacemark {
+    var city: String? { locality }
+}
+
+extension CLLocation {
+    func placemark(completion: @escaping (_ placemark: CLPlacemark?, _ error: Error?) -> ()) {
+        CLGeocoder().reverseGeocodeLocation(self) { completion($0?.first, $1) }
+    }
+}

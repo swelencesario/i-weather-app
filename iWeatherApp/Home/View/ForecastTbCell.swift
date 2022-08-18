@@ -27,9 +27,9 @@ class ForecastTbCell: UITableViewCell {
     
     func setup(_ viewModel: ListViewModel) {
         self.dateLabel.text = String(viewModel.dt)
-        self.maxTempLabel.text = String(viewModel.temp_max)
-        self.minTemLabel.text = String(viewModel.temp_min)
-        
+        self.maxTempLabel.text = "H: " + String(viewModel.maxTempString) + "°C"
+        self.minTemLabel.text = "L: " + String(viewModel.minTempString) + "°C"
+        self.icon.loadFrom(URLAddress: "https://openweathermap.org/img/wn/"+"\(viewModel.icon)"+"@2x.png")
    }
 }
 

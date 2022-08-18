@@ -28,7 +28,26 @@ public struct Weather: Codable {
     let id: Int
     let main: String
     let description: String
-    let icon: String
+    let icon: String?
+    
+    var conditionImage: String {
+        switch id {
+        case 200...299:
+            return "imThunderstorm"
+        case 300...399:
+            return "imDrizzle"
+        case 500...599:
+            return "imRain"
+        case 600...699:
+            return "imSnow"
+        case 700...799:
+            return "imAtmosphere"
+        case 800:
+            return "imClear"
+        default:
+            return "imClouds"
+        }
+    }
 
 }
 
