@@ -8,8 +8,6 @@
 import UIKit
 
 class ForecastTbCell: UITableViewCell {
-    
-    //var viewModel: WeatherItemsViewModel?
  
     @IBOutlet weak var dateLabel: UILabel!
     

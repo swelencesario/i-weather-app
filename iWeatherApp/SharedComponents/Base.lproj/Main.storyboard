@@ -24,25 +24,25 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Tjg-UY-1TK">
-                                <rect key="frame" x="259" y="15" width="100" height="31"/>
+                                <rect key="frame" x="259" y="11.5" width="100" height="38"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lai-9S-aOo">
-                                        <rect key="frame" x="0.0" y="0.0" width="33.5" height="31"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="33.5" height="38"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="circle" catalog="system"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="gps"/>
                                         <connections>
                                             <action selector="locationPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="c75-Sf-IMw"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Nx-0u-Hhd">
-                                        <rect key="frame" x="33.5" y="0.0" width="33" height="31"/>
+                                        <rect key="frame" x="33.5" y="0.0" width="33" height="38"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="star" catalog="system"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pyb-wC-vgc">
-                                        <rect key="frame" x="66.5" y="0.0" width="33.5" height="31"/>
+                                        <rect key="frame" x="66.5" y="0.0" width="33.5" height="38"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="magnifyingglass" catalog="system"/>
@@ -334,8 +334,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="circle" catalog="system" width="128" height="121"/>
         <image name="cloud.bolt.rain.fill" catalog="system" width="122" height="128"/>
+        <image name="gps" width="24" height="24"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="minus.circle.fill" catalog="system" width="128" height="121"/>
         <image name="square.and.pencil" catalog="system" width="128" height="115"/>

@@ -5,7 +5,7 @@
 //  Created by Swelen Poliana Cesario Ebert on 11/08/22.
 //
 
-import UIKit
+//"H: "import UIKit
 import CoreLocation
 import MapKit
 
@@ -68,12 +68,7 @@ class HomeViewController: UIViewController {
             self?.maxTempLabel.text = "H: " + String(weatherResults[0].maxTempString) + "°C"
                         self?.minTemp.text = "L: " + String(weatherResults[0].minTempString) + "°C"
             self?.descriptionLabel.text = weatherResults.first?.description
-            //            self?.localNameLabel.text = weatherResults[0].localName
-            //            self?.iconImage.loadFrom(URLAddress: weatherResults[0].iconPath)
-            //            self?.currentDate.text = self?.viewModel.customDate(weatherResults[0].dt ?? 0)
-            //
-            //
-            
+
         }
     }
 }
@@ -99,20 +94,20 @@ extension HomeViewController: UITableViewDelegate {
     }
 }
 
-extension UIImageView {
-    func loadFrom(URLAddress: String) {
-        guard let url = URL(string: URLAddress) else {
-            return
-        }
-        DispatchQueue.main.async { [weak self] in
-            if let imageData = try? Data(contentsOf: url) {
-                if let loadedImage = UIImage(data: imageData) {
-                    self?.image = loadedImage
-                }
-            }
-        }
-    }
-}
+//extension UIImageView {
+//    func loadFrom(URLAddress: String) {
+//        guard let url = URL(string: URLAddress) else {
+//            return
+//        }
+//        DispatchQueue.main.async { [weak self] in
+//            if let imageData = try? Data(contentsOf: url) {
+//                if let loadedImage = UIImage(data: imageData) {
+//                    self?.image = loadedImage
+//                }
+//            }
+//        }
+//    }
+//}
 
 extension HomeViewController: CLLocationManagerDelegate {
     
