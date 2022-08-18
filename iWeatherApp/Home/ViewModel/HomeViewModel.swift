@@ -12,7 +12,7 @@ public class HomeViewModel {
     var localName: String?
     var latitude: String?
     var longitude: String?
-    var weatherResults = Observable<[WeatherItemsViewModel]?>(nil)
+    var weatherResults = Observable<[ListViewModel]?>(nil)
     var weatherRepository: WeatherRepositoryProtocol
     
     init(repository: WeatherRepositoryProtocol = WeatherRepository()) {
@@ -43,7 +43,7 @@ public class HomeViewModel {
     func getWeatherByCoreLocation(_ longitude: String, _ latitude: String) {
         weatherRepository.fetchByCoreLocation(longitude: longitude, latitude: latitude) { weatherDetails in
             
-            self.weatherResults.value = weatherDetails.map{ WeatherItemsViewModel($0)}
+            self.weatherResults.value = weatherDetails.map { ListViewModel($0)}
         }
         
     }

@@ -9,12 +9,6 @@ import Foundation
 
 public struct WeatherData: Codable {
     var list: [List]
-    var city: City
-
-    var model: [WeatherModel] {
-        return [WeatherModel(dt: list.first?.dt ?? 0, temp: list.first?.main.temp ?? 0.0, minTemp: list.first?.main.temp_min ?? 0.0, maxTemp: list.first?.main.temp_max ?? 0.0, weatherId: list.first?.weather.first?.id ?? 0, weatherDescription: list.first?.weather.first?.description ?? "", weatherIcon: list.first?.weather.first?.icon ?? "", cityName: city.name)]
-    }
-
 }
 
 public struct List: Codable {

@@ -25,11 +25,10 @@ class ForecastTbCell: UITableViewCell {
         }
     }
     
-    func setup(_ viewModel: WeatherItemsViewModel) {
-        dateLabel.text = viewModel.stringDate(viewModel.dt!)
-        //icon.image =
-        maxTempLabel.text = "H: " + String(viewModel.maxString) + "°C"
-        minTemLabel.text = "L: " + String(viewModel.minString) + "°C"
+    func setup(_ viewModel: ListViewModel) {
+        self.dateLabel.text = String(viewModel.dt)
+        self.maxTempLabel.text = String(viewModel.temp_max)
+        self.minTemLabel.text = String(viewModel.temp_min)
         
    }
 }

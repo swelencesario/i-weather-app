@@ -14,7 +14,7 @@ class HomeViewController: UIViewController {
     
     var viewModel = HomeViewModel()
     
-    var weatherResults = [WeatherItemsViewModel]() {
+    var weatherResults = [ListViewModel]() {
         didSet {
             tableView.reloadData()
         }
@@ -57,13 +57,13 @@ let repository = WeatherRepository()
             guard let weatherResults = weatherResults else { return }
             
             self?.weatherResults = weatherResults
-            self?.currentTemp.text = String(weatherResults[0].temperatureString) + "°C"
-            self?.maxTempLabel.text = "H: " + String(weatherResults[0].maxString) + "°C"
-            self?.minTemp.text = "L: " + String(weatherResults[0].minString) + "°C"
-            self?.descriptionLabel.text = weatherResults[0].mainDescription
-            self?.localNameLabel.text = weatherResults[0].localName
-            self?.iconImage.loadFrom(URLAddress: weatherResults[0].iconPath)
-            self?.currentDate.text = self?.viewModel.customDate(weatherResults[0].dt ?? 0)
+//            self?.currentTemp.text = String(weatherResults[0].temperatureString) + "°C"
+//            self?.maxTempLabel.text = "H: " + String(weatherResults[0].maxString) + "°C"
+//            self?.minTemp.text = "L: " + String(weatherResults[0].minString) + "°C"
+//            self?.descriptionLabel.text = weatherResults[0].mainDescription
+//            self?.localNameLabel.text = weatherResults[0].localName
+//            self?.iconImage.loadFrom(URLAddress: weatherResults[0].iconPath)
+//            self?.currentDate.text = self?.viewModel.customDate(weatherResults[0].dt ?? 0)
 //
 //
             
