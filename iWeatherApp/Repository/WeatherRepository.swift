@@ -54,6 +54,7 @@ public class WeatherRepository: WeatherRepositoryProtocol {
             .responseDecodable(of: WeatherData.self, queue: .main, decoder: JSONDecoder()) { (response) in
             switch response.result {
             case .success(let weatherData):
+                debugPrint(response)
                 let model = weatherData.list
                 completion(model)
             case .failure(_):

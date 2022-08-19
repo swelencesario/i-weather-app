@@ -39,6 +39,5 @@ public class ListViewModel {
         temp_max = list.main.temp_max
         temp = list.main.temp
         description = list.weather.first?.description.capitalized ?? ""
-        
     }
 }
