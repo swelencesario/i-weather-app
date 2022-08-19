@@ -41,7 +41,11 @@ class ForecastTbCell: UITableViewCell {
         self.minTemLabel.text = "L: " + String(viewModel.minTempString) + "°C"
         self.icon.loadFrom(URLAddress: "https://openweathermap.org/img/wn/"+"\(viewModel.icon)"+"@2x.png")
         
+        if viewModel.weatherDate == "12:00 PM" {
+            self.dateLabel.text = viewModel.weatherDate
+        }
    }
+    
 }
 
 

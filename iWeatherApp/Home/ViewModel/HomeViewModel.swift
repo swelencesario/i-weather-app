@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Alamofire
 
 public class HomeViewModel {
     
@@ -41,12 +42,15 @@ public class HomeViewModel {
     //    }
     
     func getWeatherByCoreLocation(_ longitude: String, _ latitude: String) {
+        var listViewModel: [ListViewModel] = []
         weatherRepository.fetchByCoreLocation(longitude: longitude, latitude: latitude) { weatherDetails in
             
-            self.weatherResults.value = weatherDetails.map { ListViewModel($0)}
+            for weatherDetail in weatherDetails {
+                if weatherDetail.dt_txt.hasSuffix("12:00:00") == true {
+                    listViewModel.append(ListViewModel(weatherDetail))
+                }
+            }
+            self.weatherResults.value = listViewModel
         }
-        
     }
-    
-
 }

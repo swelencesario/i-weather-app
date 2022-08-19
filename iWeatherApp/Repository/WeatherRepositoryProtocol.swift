@@ -9,6 +9,6 @@ import Foundation
 
 public protocol WeatherRepositoryProtocol {
     
-    func fetchByLocal(local: String, completion: @escaping ([WeatherModel]) -> ())
+    func fetchByLocal(local: String, completion: @escaping ([List]) -> ())
     func fetchByCoreLocation(longitude: String, latitude: String, completion: @escaping ([List]) -> ())
 }

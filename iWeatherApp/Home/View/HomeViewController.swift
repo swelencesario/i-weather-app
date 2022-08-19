@@ -37,19 +37,8 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    let repository = WeatherRepository()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let main = Main(temp: 30.0, temp_min: 25.0, temp_max: 30.0)
-        let weather = Weather(id: 801, main: "Clouds", description: "few clouds", icon: "02d")
-        let list = List(dt: 1660856400, main: main, weather: [weather, weather, weather])
-        
-        let vm = [ListViewModel(list), ListViewModel(list), ListViewModel(list)]
-        
-        
-        print(vm.description)
-        
         
         self.initialSetup()
         self.bindElements()

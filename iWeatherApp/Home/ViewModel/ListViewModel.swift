@@ -15,6 +15,7 @@ public class ListViewModel {
     var temp_max: Double
     var temp: Double
     var description: String
+    var dt_txt: String
     
     var weatherDate: String {
         return Date(timeIntervalSince1970: TimeInterval(dt)).formatted(date: .abbreviated, time: .omitted)
@@ -39,5 +40,7 @@ public class ListViewModel {
         temp_max = list.main.temp_max
         temp = list.main.temp
         description = list.weather.first?.description.capitalized ?? ""
+        
+        dt_txt = list.dt_txt
     }
 }
